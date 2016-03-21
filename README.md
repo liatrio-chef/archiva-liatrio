@@ -1,6 +1,6 @@
 archiva-liatrio Cookbook
 ========================
-A wrapper cookbook that installs and configures archiva. Berkshelf is used to satisfy cookbook dependencies with Vagrant.
+A wrapper cookbook that installs and configures archiva with three created users that can push artifacts and be used as a local mirror.
 
 Requirements
 ------------
@@ -15,18 +15,14 @@ Usage
 
 Browse to http://localhost:18081/
 
-or
+The following users are created:
+- admin :: admin1
+- deploy :: deploy1
+- snapshots :: snapshots1
 
-Just include `archiva-liatrio` in your node's `run_list`:
-
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[archiva-liatrio]"
-  ]
-}
-```
+Repositories:
+- snapshots (user snapshots with r/w access)
+- internal (user deploy with r/w access)
 
 License and Authors
 -------------------
