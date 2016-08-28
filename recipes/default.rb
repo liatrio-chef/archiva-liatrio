@@ -9,6 +9,14 @@ node.override['java']['jdk_version'] = '8'
 
 include_recipe "archiva"
 
+cookbook_file '/opt/archiva/conf/security.properties' do
+  source 'security.properties'
+  owner 'root'
+  group 'root'
+  mode  '0666'
+  action :create
+end
+
 ruby_block 'wait_for_archiva' do
   block do
     true until ::File.exists?('/opt/archiva/data/databases')
@@ -53,4 +61,9 @@ cookbook_file '/opt/archiva/data.updated' do
   mode '0666'
   action :create
   notifies :start, "service[archiva]"
+end
+
+service "archiva_enable" do
+  service_name "archiva"
+  action :enable
 end

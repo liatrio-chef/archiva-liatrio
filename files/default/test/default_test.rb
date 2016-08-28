@@ -19,7 +19,7 @@ describe_recipe 'archiva-liatrio::default' do
   #  web_check_match("http://127.0.0.1/", "Apache")
   #end
 
-  it 'must have created /opt/sonarqube folder' do
+  it 'must have created /opt/archiva folder' do
     file("/opt/archiva")
   end
 
