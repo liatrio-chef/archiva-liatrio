@@ -4,8 +4,7 @@ archiva-liatrio CHANGELOG
 0.2.2
 -----
 - justin@liatrio.com
--  
--
+- update ChefSpec Tests  
 
 
 0.2.1

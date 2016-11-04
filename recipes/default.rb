@@ -2,7 +2,6 @@
 # Cookbook Name:: archiva-liatrio
 # Recipe:: default
 #
-#
 
 node.override['java']['jdk_version'] = '8'
 # node.override['archiva']['version'] = '2.2.0'
