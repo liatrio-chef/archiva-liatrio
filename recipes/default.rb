@@ -5,9 +5,9 @@
 #
 
 node.override['java']['jdk_version'] = '8'
-#node.override['archiva']['version'] = '2.2.0'
+# node.override['archiva']['version'] = '2.2.0'
 
-include_recipe "archiva"
+include_recipe 'archiva'
 
 cookbook_file '/opt/archiva/conf/security.properties' do
   source 'security.properties'
@@ -19,7 +19,7 @@ end
 
 ruby_block 'wait_for_archiva' do
   block do
-    true until ::File.exists?('/opt/archiva/data/databases')
+    true until ::File.exist?('/opt/archiva/data/databases')
   end
 end
 
@@ -31,27 +31,27 @@ cookbook_file '/opt/archiva/data.tar.gz' do
   action :create
 end
 
-service "archiva_stop" do
-  service_name "archiva"
+service 'archiva_stop' do
+  service_name 'archiva'
   action :stop
-  not_if do ::File.exists?('/opt/archiva/data.updated') end
+  not_if { ::File.exist?('/opt/archiva/data.updated') }
 end
 
 template "#{node[:archiva][:home]}/conf/jetty.xml" do
   source   'jetty.xml.erb'
   mode     '0644'
   owner    node[:archiva][:user_owner]
-#  notifies :restart, 'service[archiva]', :immediately
+  #  notifies :restart, 'service[archiva]', :immediately
 end
 
 execute 'remove_databases' do
   command 'rm -rf /opt/archiva/data/'
-  not_if do ::File.exists?('/opt/archiva/data.updated') end
+  not_if { ::File.exist?('/opt/archiva/data.updated') }
 end
 
 execute 'untar_data' do
   command 'tar -C /opt/archiva -zxvf /opt/archiva/data.tar.gz'
-  not_if do ::File.exists?('/opt/archiva/data.updated') end
+  not_if { ::File.exist?('/opt/archiva/data.updated') }
 end
 
 cookbook_file '/opt/archiva/data.updated' do
@@ -60,10 +60,10 @@ cookbook_file '/opt/archiva/data.updated' do
   group 'root'
   mode '0666'
   action :create
-  notifies :start, "service[archiva]"
+  notifies :start, 'service[archiva]'
 end
 
-service "archiva_enable" do
-  service_name "archiva"
+service 'archiva_enable' do
+  service_name 'archiva'
   action :enable
 end
