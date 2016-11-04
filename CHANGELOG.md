@@ -4,8 +4,8 @@ archiva-liatrio CHANGELOG
 0.2.2
 -----
 - justin@liatrio.com
-- Added rubocop.yml to make sure ports do not contain underscores automatically. 
-
+-  
+-
 
 
 0.2.1
@@ -17,6 +17,7 @@ archiva-liatrio CHANGELOG
 - Altered metadata to point to source_url and issues_url
 - Java set as dependency to this project.
 - Removed MiniTest folders.
+- Added rubocop.yml to make sure ports do not contain underscores automatically.
 
 0.1.0
 -----
