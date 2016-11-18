@@ -4,11 +4,7 @@ driver:
   use_sudo: false
 
 platforms:
-<<<<<<< HEAD
   - name: centos-6.8
-=======
-  - name: centos-7.2
->>>>>>> origin/master
 
 suites:
   - name: default
