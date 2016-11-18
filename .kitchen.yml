@@ -10,4 +10,7 @@ suites:
   - name: default
     run_list:
       - recipe[archiva-liatrio::default]
-    attributes:
+    attributes: {
+      java.jdk_version: "8",
+      foo: "bar"
+    }
