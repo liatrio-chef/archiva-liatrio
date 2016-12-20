@@ -22,7 +22,6 @@ Vagrant.configure(2) do |config|
   # Installs java first then the liatrio archiva wrapper.
   config.berkshelf.enabled = true
   config.vm.provision 'chef_solo' do |chef|
-
     chef.version = '12.16.42'
 
     chef.add_recipe 'java'
